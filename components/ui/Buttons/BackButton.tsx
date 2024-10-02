@@ -8,12 +8,12 @@ const BackButton = () => {
   const router = useRouter();
   return (
     <div className="flex items-center gap-x-2 bg-default-200 p-2 rounded-xl shadow">
-      <Link
+      <div
         onClick={router.back}
         className="text-gray-700 hover:underline cursor-pointer capitalize"
       >
-        <ArrowLeft01Icon /> 
-      </Link>
+        <ArrowLeft01Icon />
+      </div>
     </div>
   );
 };
