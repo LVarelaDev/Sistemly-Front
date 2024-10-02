@@ -1,19 +1,33 @@
+"use client";
+
+import { useEffect, useState } from "react";
 import { getProjectsById } from "@/services/projects/projectService";
-import { notFound } from "next/navigation";
 import ProjectForm from "./partials/ProjectForm";
 
 interface Props {
   id?: string;
 }
 
-const ManageContainer = async ({ id }: Props) => {
-  let project = undefined;
+const ManageContainer = ({ id }: Props) => {
+  const [project, setProject] = useState<any>(null);
+  const [loading, setLoading] = useState<boolean>(true);
 
-  if (id) {
-    project = await getProjectsById(+id);
-    if (!project) {
-      notFound();
-    }
+  useEffect(() => {
+    const fetchProject = async () => {
+      if (id) {
+        const fetchedProject = await getProjectsById(+id);
+        if (fetchedProject) {
+          setProject(fetchedProject);
+        }
+      }
+      setLoading(false);
+    };
+
+    fetchProject();
+  }, [id]);
+
+  if (loading) {
+    return <div>Loading...</div>;
   }
 
   return (

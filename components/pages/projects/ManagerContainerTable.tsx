@@ -1,3 +1,4 @@
+// ManagerContainerTable.tsx
 "use client";
 import useDebounce from "@/hooks/useDebounce";
 import { EnumEndpoints, getProjects } from "@/services/projects/projectService";
@@ -10,21 +11,17 @@ import BaseFetchContainer from "@/components/shared/BaseFetchContainer";
 
 const ManagerContainerTable = () => {
   const [currentPage, setCurrentPage] = useState(1);
-
   const form = useForm();
-
   const value = useDebounce<string>(form.watch("searchValue"), 300);
 
-  const {
-    data: projects,
-    error,
-    isLoading,
-  } = useSWR([EnumEndpoints.GetProjects, value], () =>
-    getProjects({
-      page: currentPage,
-      pageSize: 10,
-      sort: value == "" || value == undefined ? undefined : value,
-    })
+  const { data: projects, error, isLoading } = useSWR(
+    [EnumEndpoints.GetProjects, value],
+    () =>
+      getProjects({
+        page: currentPage,
+        pageSize: 10,
+        sort: value === "" || value === undefined ? undefined : value,
+      })
   );
 
   return (

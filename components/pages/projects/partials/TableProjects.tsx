@@ -25,11 +25,15 @@ const TableProject = ({ data }: Props) => {
       />
       <CustomGridColumn<ProjectDto>
         labelHeader="Cliente"
-        colRender={(_, project) => project.client.companyName}
+        colRender={(_, project) =>
+          project?.client?.companyName ?? "no hay registro"
+        }
       />
       <CustomGridColumn<ProjectDto>
         labelHeader="Empresa"
-        colRender={(_, project) => project.company.companyName}
+        colRender={(_, project) =>
+          project?.company?.companyName ?? "no hay registro"
+        }
       />
       <CustomGridColumn<ProjectDto>
         labelHeader="Presupuesto"

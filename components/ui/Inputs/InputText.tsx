@@ -2,7 +2,7 @@ import React from "react";
 import { Input } from "@nextui-org/react";
 import { RegisterOptions, UseFormReturn } from "react-hook-form";
 
-type props = {
+type Props = {
   form: UseFormReturn<any, any>;
   name: string;
   label: string;
@@ -20,7 +20,7 @@ const InputText = ({
   placeholder,
   type = "text",
   price = false,
-}: props) => {
+}: Props) => {
   const { register, formState } = form;
   const { errors } = formState;
 
@@ -40,23 +40,14 @@ const InputText = ({
           )
         }
       />
-      {errors[name] && (
-        <p className="text-danger text-xs">{errors[name].message?.toString()}</p>
+      {/* Comprobación más estricta para el mensaje de error */}
+      {errors[name] && typeof errors[name].message === 'string' && (
+        <p className="text-danger text-xs">
+          {errors[name].message}
+        </p>
       )}
     </div>
   );
 };
 
 export default InputText;
-
-<Input
-  type="number"
-  label="Price"
-  placeholder="0.00"
-  labelPlacement="outside"
-  startContent={
-    <div className="pointer-events-none flex items-center">
-      <span className="text-default-400 text-small">$</span>
-    </div>
-  }
-/>;
