@@ -40,12 +40,11 @@ const InputText = ({
           )
         }
       />
-      {/* Comprobación más estricta para el mensaje de error */}
-      {errors[name] && typeof errors[name].message === 'string' && (
+      {/* {errors && typeof errors[name].message === 'string' && (
         <p className="text-danger text-xs">
           {errors[name].message}
         </p>
-      )}
+      )} */}
     </div>
   );
 };
