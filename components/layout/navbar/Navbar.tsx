@@ -1,6 +1,5 @@
 "use client";
 
-import BreadcrumbComponent from "@/components/ui/Breadcrumbs/Breadcrumbs";
 import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
