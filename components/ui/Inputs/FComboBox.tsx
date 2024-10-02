@@ -66,6 +66,13 @@ const FComboBox = ({
     }
   };
 
+  const handleKeyDown = (event: React.KeyboardEvent) => {
+    if (event.key === "Enter" || event.key === " ") {
+      event.preventDefault();
+      handleShowOptions();
+    }
+  };
+
   useEffect(() => {
     register(name, rules);
   }, [name, register, rules]);
@@ -117,6 +124,9 @@ const FComboBox = ({
         <div
           className="flex bg-white w-full py-2 px-3 rounded-xl border-2 cursor-pointer"
           onClick={handleShowOptions}
+          role="button"
+          tabIndex={0}
+          onKeyDown={handleKeyDown}
         >
           <div className="flex flex-col flex-1 ">
             <label

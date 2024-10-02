@@ -103,7 +103,6 @@ const FInputDate = ({ label, name, form }: FInputDateProps) => {
     setNoOfDays(daysArray);
   };
 
-
   useEffect(() => {
     const handleCustomEvent = (event: CustomEvent) => {
       if (event.detail.name !== name) {
@@ -126,10 +125,7 @@ const FInputDate = ({ label, name, form }: FInputDateProps) => {
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
-      if (
-        dateRef.current &&
-        !dateRef.current.contains(event.target as Node)
-      ) {
+      if (dateRef.current && !dateRef.current.contains(event.target as Node)) {
         setShowDatepicker(false);
       }
     };
@@ -287,6 +283,15 @@ const FInputDate = ({ label, name, form }: FInputDateProps) => {
                   >
                     <div
                       onClick={() => getDateValue(date)}
+                      onKeyDown={(e) => {
+                        if (e.key === "Enter" || e.key === " ") {
+                          e.preventDefault();
+                          getDateValue(date);
+                        }
+                      }}
+                      role="button"
+                      tabIndex={0}
+                      aria-label={`Seleccionar fecha ${date}`}
                       className={`cursor-pointer text-center text-sm leading-none rounded-full transition ease-in-out duration-100`}
                     >
                       {date}
