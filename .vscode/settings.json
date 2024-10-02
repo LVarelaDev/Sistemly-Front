@@ -1,3 +1,9 @@
 {
-  "typescript.tsdk": "node_modules/typescript/lib"
+  "typescript.tsdk": "node_modules/typescript/lib",
+  "appService.zipIgnorePattern": [
+    "node_modules{,/**}",
+    ".vscode{,/**}"
+  ],
+  "appService.defaultWebAppToDeploy": "/subscriptions/85996a70-6ada-4be0-b696-e7cd03f363b8/resourceGroups/ODIN/providers/Microsoft.Web/sites/sistemly",
+  "appService.deploySubpath": ".next"
 }
