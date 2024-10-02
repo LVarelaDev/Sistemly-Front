@@ -1,11 +1,10 @@
 "use client";
 
-import * as React from "react";
 import { NextUIProvider } from "@nextui-org/system";
-import { ThemeProvider as NextThemesProvider } from "next-themes";
-import { ThemeProviderProps } from "next-themes/dist/types";
-import { AppProgressBar, useRouter } from "next-nprogress-bar";
 import { SessionProvider } from "next-auth/react";
+import { AppProgressBar, useRouter } from "next-nprogress-bar";
+import { ThemeProviderProps } from "next-themes/dist/types";
+import * as React from "react";
 
 export interface ProvidersProps {
   children: React.ReactNode;
@@ -22,9 +21,7 @@ export function Providers({ children, themeProps }: ProvidersProps) {
         options={{ showSpinner: false }}
         shallowRouting
       />
-      <NextUIProvider navigate={router.push}>
-        <NextThemesProvider {...themeProps}>{children}</NextThemesProvider>
-      </NextUIProvider>
+      <NextUIProvider navigate={router.push}>{children}</NextUIProvider>
     </SessionProvider>
   );
 }

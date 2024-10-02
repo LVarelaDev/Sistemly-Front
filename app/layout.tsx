@@ -36,11 +36,11 @@ export default async function RootLayout({
       <head />
       <body
         className={clsx(
-          "min-h-screen bg-gray-100 font-sans antialiased",
+          "min-h-screen bg-slate-100 font-sans antialiased",
           fontSans.variable
         )}
       >
-        <Providers themeProps={{ attribute: "class" }}>
+        <Providers>
           <PageManager>{children}</PageManager>
 
           <Toaster

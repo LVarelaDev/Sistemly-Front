@@ -1,8 +1,4 @@
-// /** @type {import('next').NextConfig} */
-// const nextConfig = {
-//     experimental: {
-//         forceSwcTransforms: true, // Desactiva Edge Functions
-//       },
-// }
+/** @type {import('next').NextConfig} */
+const nextConfig = {};
 
-// module.exports = nextConfig
+module.exports = nextConfig;
