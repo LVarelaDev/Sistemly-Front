@@ -10,6 +10,7 @@ type Props = {
   placeholder?: string;
   type?: string;
   price?: boolean;
+  clasName?: string;
 };
 
 const InputText = ({
@@ -20,6 +21,7 @@ const InputText = ({
   placeholder,
   type = "text",
   price = false,
+  clasName,
 }: Props) => {
   const { register, formState } = form;
   const { errors } = formState;
@@ -32,6 +34,7 @@ const InputText = ({
         placeholder={placeholder}
         type={type}
         variant="bordered"
+        className={clasName}
         startContent={
           price && (
             <div className="pointer-events-none flex items-center">

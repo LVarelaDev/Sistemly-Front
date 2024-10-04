@@ -11,22 +11,22 @@ import {
 import { FilterIcon, PlusSignIcon } from "hugeicons-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import React from "react";
+import React, { Dispatch, SetStateAction } from "react";
 import { UseFormReturn } from "react-hook-form";
 
 interface Props {
   form: UseFormReturn<any, any>;
+  setShowModal: Dispatch<SetStateAction<boolean>>;
 }
 
-const TableHeader = ({ form }: Props) => {
+const TableHeader = ({ form, setShowModal }: Props) => {
   const pathName = usePathname();
   return (
     <section className="flex items-center justify-between py-3">
       <Button
-        as={Link}
         color="primary"
         endContent={<PlusSignIcon size={20} />}
-        href="/projects/manage"
+        onClick={() => setShowModal(true)}
       >
         Agregar
       </Button>

@@ -45,9 +45,30 @@ export const getProjectsById = async (id: number): Promise<ProjectDto> => {
 
 export const createProject = async (project: ProjectDto): Promise<KeyValue> => {
   try {
+    const formData = new FormData();
+    formData.append(
+      "budget",
+      project.budget.toString() == "" ? "0" : project.budget.toString()
+    );
+    formData.append("economicProposal", project.economicProposal.toString());
+    formData.append("clientId", project.clientId.toString());
+    formData.append("finishDate", project.finishDate.toString());
+    formData.append("initDate", project.initDate.toString());
+    formData.append("name", project.name);
+    formData.append("description", project.description);
+
+    if (project.economicProposalFile) {
+      formData.append("economicProposalFile", project.economicProposalFile[0]);
+    }
+
     const response = await axiosIntance.post<KeyValue>(
       `${EnumEndpoints.CreateProject}`,
-      project
+      formData,
+      {
+        headers: {
+          "Content-type": "multipart/form-data",
+        },
+      }
     );
 
     return response.data;
