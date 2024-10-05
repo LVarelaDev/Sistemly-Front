@@ -1,15 +1,13 @@
-// ManagerContainerTable.tsx
 "use client";
+import BaseFetchContainer from "@/components/shared/BaseFetchContainer";
 import useDebounce from "@/hooks/useDebounce";
 import { EnumEndpoints, getProjects } from "@/services/projects/projectService";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import useSWR from "swr";
+import ProjectForm from "./partials/ProjectForm";
 import TableHeader from "./partials/TableHeaders";
 import TableProject from "./partials/TableProjects";
-import BaseFetchContainer from "@/components/shared/BaseFetchContainer";
-import Modal from "@/components/ui/Modal/Modal";
-import ProjectForm from "./partials/ProjectForm";
 
 const ManagerContainerTable = () => {
   const [showModal, setShowModal] = useState(false);
@@ -30,13 +28,15 @@ const ManagerContainerTable = () => {
   );
 
   return (
-    <BaseFetchContainer data={projects} isLoading={isLoading} error={error}>
-      <div className="flex flex-col gap-4">
-        <TableHeader form={form} setShowModal={setShowModal} />
-        <TableProject data={projects} />
-      </div>
-      <ProjectForm isOpen={showModal} setShowModal={setShowModal} />
-    </BaseFetchContainer>
+    <div className="flex flex-col gap-5">
+      <TableHeader form={form} setShowModal={setShowModal} />
+      <BaseFetchContainer data={projects} isLoading={isLoading} error={error}>
+        <div className="flex flex-col gap-4">
+          <TableProject data={projects} />
+        </div>
+        <ProjectForm isOpen={showModal} setShowModal={setShowModal} />
+      </BaseFetchContainer>
+    </div>
   );
 };
 

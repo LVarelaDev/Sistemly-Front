@@ -7,14 +7,15 @@ type props = {
 	name: string
 	label: string
 	rules?: RegisterOptions<any, string>
+	color?: "success" | "default" | "primary" | "secondary" | "warning" | "danger"
 }
 
-const Toggle = ({ form, name, label, rules }: props) => {
+const Toggle = ({ form, name, label, rules, color="primary" }: props) => {
 	const { register } = form
 
 	return (
 		<div className="flex gap-2">
-			<Switch aria-label="Active" {...register(name, rules)} />
+			<Switch color={color} aria-label="Active" {...register(name, rules)} />
 			<p>{label}</p>
 		</div>
 	)

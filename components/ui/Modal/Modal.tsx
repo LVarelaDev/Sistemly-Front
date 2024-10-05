@@ -16,6 +16,7 @@ interface Props {
   children: ReactNode;
   action: () => void;
   displayButton: string;
+  colorButton?: "primary" | "danger"
 }
 
 const Modal = ({
@@ -26,6 +27,7 @@ const Modal = ({
   children,
   action,
   displayButton,
+  colorButton = "primary"
 }: Props) => {
   return (
     <NextUIModal isOpen={isOpen} onClose={onClose} size={size}>
@@ -33,7 +35,7 @@ const Modal = ({
         <ModalHeader className="flex flex-col gap-1">{title}</ModalHeader>
         <ModalBody>{children}</ModalBody>
         <ModalFooter>
-          <Button color="primary" onPress={action}>
+          <Button color={colorButton} onPress={action}>
             {displayButton}
           </Button>
         </ModalFooter>
