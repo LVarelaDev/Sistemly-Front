@@ -1,38 +1,31 @@
 "use client";
 
+import {
+  EnumEndpoints,
+  getProjectsById,
+} from "@/services/projects/projectService";
 import { useEffect, useState } from "react";
-import { getProjectsById } from "@/services/projects/projectService";
-import ProjectForm from "./partials/ProjectForm";
+import ProjectDetail from "./project-details/ProjectDetail";
+import useSWR from "swr";
 
 interface Props {
   id?: string;
 }
 
 const ManageContainer = ({ id }: Props) => {
-  const [project, setProject] = useState<any>(null);
-  const [loading, setLoading] = useState<boolean>(true);
-
-  useEffect(() => {
-    const fetchProject = async () => {
-      if (id) {
-        const fetchedProject = await getProjectsById(+id);
-        if (fetchedProject) {
-          setProject(fetchedProject);
-        }
-      }
-      setLoading(false);
-    };
-
-    fetchProject();
-  }, [id]);
+  const {
+    data: project,
+    isLoading: loading,
+    mutate,
+  } = useSWR([EnumEndpoints.GetProjectById, id], () => getProjectsById(+id));
 
   if (loading) {
     return <div>Loading...</div>;
   }
 
   return (
-    <section className="mt-10 max-w-[50%]">
-      <ProjectForm project={project} />
+    <section className="mt-10">
+      {project && <ProjectDetail project={project} mutateProject={mutate} />}
     </section>
   );
 };

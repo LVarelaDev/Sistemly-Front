@@ -11,9 +11,9 @@ interface Props {
 const page = ({ searchParams }: Props) => {
   const id = searchParams.id;
   return (
-    <main className="container">
+    <main className="flex flex-col">
       <div className="flex gap-4 pt-2 items-center">
-        <BackButton /> <p className="text-xl font-bold text-gray-600">Crear nuevo proyecto</p>
+        <BackButton /> <p className="text-xl font-bold text-gray-600">Detalle de proyecto</p>
       </div>
 
       <Suspense fallback={<span>loading...</span>}>

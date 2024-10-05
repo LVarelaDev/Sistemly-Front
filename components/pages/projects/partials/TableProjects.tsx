@@ -4,7 +4,10 @@ import { ProjectDto } from "@/models/projects/projectDto";
 import { convertToCOP } from "@/utils/helpers/convertToCOP";
 import { formatDate } from "@/utils/helpers/formatDate";
 import { statusColorResolver } from "@/utils/helpers/statusColorResolver";
-import { Chip } from "@nextui-org/react";
+import { faEye } from "@fortawesome/free-regular-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { Chip, Tooltip } from "@nextui-org/react";
+import Link from "next/link";
 
 interface Props {
   data?: PaginatorResponse<ProjectDto>;
@@ -50,6 +53,18 @@ const TableProject = ({ data }: Props) => {
       <CustomGridColumn<ProjectDto>
         labelHeader="Fecha fin"
         colRender={(_, project) => formatDate(project.finishDate)}
+      />
+      <CustomGridColumn<ProjectDto>
+        labelHeader="Acciones"
+        colRender={(_, project) => (
+          <div className="flex gap-3">
+            <Tooltip content="Ver detalle" delay={100} closeDelay={50}>
+              <Link href={`/projects/manage?id=${project.id}`}>
+                <FontAwesomeIcon icon={faEye} className="text-default-500" />
+              </Link>
+            </Tooltip>
+          </div>
+        )}
       />
     </CustomGrid>
   );
