@@ -3,8 +3,8 @@ import { CustomGrid, CustomGridColumn } from "@/components/ui/Table/FTable";
 import { EconomicProposalDto } from "@/models/projects/economicProposal";
 import { ProjectDto } from "@/models/projects/projectDto";
 import {
-    EnumEndpoints,
-    getEconomicProposal,
+  EnumEndpoints,
+  getEconomicProposal,
 } from "@/services/projects/projectService";
 import { convertToCOP } from "@/utils/helpers/convertToCOP";
 import { useForm } from "react-hook-form";
@@ -30,7 +30,12 @@ const EconomicProposal = ({
 
   return (
     <div className="flex flex-col gap-4">
-      <TableHeader form={form} />
+      <TableHeader
+        form={form}
+        projectId={id}
+        mutate={mutate}
+        mutateProject={mutateProject}
+      />
       <BaseFetchContainer data={data} isLoading={isLoading} error={error}>
         <CustomGrid<EconomicProposalDto> dataList={data} keyIdentifier="id">
           <CustomGridColumn<EconomicProposalDto>

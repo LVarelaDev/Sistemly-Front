@@ -1,7 +1,10 @@
 import axiosIntance from "@/lib/axios.config";
 import { KeyValue } from "@/models/KeyValue";
 import { PaginatorResponse } from "@/models/PaginatorResponse";
-import { EconomicProposalDto } from "@/models/projects/economicProposal";
+import {
+  AddMoreEconomicProposalDto,
+  EconomicProposalDto,
+} from "@/models/projects/economicProposal";
 import { ProjectDto } from "@/models/projects/projectDto";
 
 export enum EnumEndpoints {
@@ -11,6 +14,7 @@ export enum EnumEndpoints {
   GetEconomicProposal = "Project/GetEconomicProposal",
   UpdateEconomicProposal = "Project/UpdateEconomicProposal",
   DeleteEconomicProposal = "Project/DeleteEconomicProposal",
+  AddMoreMaterials = "Project/AddMoreMaterials",
 }
 
 interface Params {
@@ -122,5 +126,24 @@ export const deleteEconomicProposal = async (
     return response.data;
   } catch (error) {
     throw "error in deleteEconomicProposal";
+  }
+};
+
+export const addMoreMaterials = async (
+  data: AddMoreEconomicProposalDto
+): Promise<KeyValue> => {
+  try {
+    const response = await axiosIntance.post<KeyValue>(
+      `${EnumEndpoints.AddMoreMaterials}`,
+      data,
+      {
+        headers: {
+          "Content-type": "multipart/form-data",
+        },
+      }
+    );
+    return response.data;
+  } catch (error) {
+    throw "error in addMoreMaterials";
   }
 };

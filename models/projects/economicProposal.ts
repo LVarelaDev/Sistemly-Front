@@ -7,3 +7,10 @@ export interface EconomicProposalDto {
     unitAmount: number;
     active: boolean;
 }
+
+
+export interface AddMoreEconomicProposalDto {
+    projectId: number;
+    file: File;
+    newFinishDate: Date | null;
+}
