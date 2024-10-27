@@ -44,7 +44,7 @@ const TableRequests = ({ data }: Props) => {
       <h1>Listo de requerimientos</h1>
       {data &&
         data.map((item) => (
-          <div className="flex gap-2 items-center">
+          <div key={item.id} className="flex gap-2 items-center">
             <div
               className={`flex items-center justify-center w-10 h-10 rounded-full p-1 border-2 ${getRandomColor()}`}
             >

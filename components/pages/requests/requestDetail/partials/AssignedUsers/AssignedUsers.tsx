@@ -10,7 +10,7 @@ const AssignedUsers = ({ data }: Props) => {
       <p className="text-lg">Usuarios asignados</p>
       <div className="flex flex-col gap-3 max-h-[200px] overflow-y-auto pr-3">
         {data.map((item) => (
-          <div className="flex gap-3 rounded-lg border-2 p-2 px-4 items-center">
+          <div key={item.name} className="flex gap-3 rounded-lg border-2 p-2 px-4 items-center">
             <ProfileLogo lettersIcon={item.letterIcon} />
             <div className="flex flex-col justify-center">
               <p>{item.name}</p>
