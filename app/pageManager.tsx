@@ -15,11 +15,16 @@ const PageManager = ({ children }: { children: ReactNode }) => {
   // Renderizar el layout y el contenido para usuarios autenticados
   if (session?.user && status === "authenticated") {
     return (
-      <main className="flex flex-grow overflow-hidden">
-        <LayoutComponent />
-        <section className="flex-1 custom-scroll-primary">
-          <Navbar />
-          <section className="px-4 py-2">{children}</section>
+      <main className="flex flex-col h-screen">
+        <Navbar />
+
+        <section className="flex flex-1 overflow-hidden"> {/* overflow-hidden previene el scroll en esta sección */}
+          <LayoutComponent />
+
+          {/* Activamos el scroll solo en el área del children */}
+          <section className="flex-1 px-4 pt-2 pb-5 bg-gray-100 overflow-y-auto custom-scroll">
+            {children}
+          </section>
         </section>
       </main>
     );

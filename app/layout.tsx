@@ -3,7 +3,6 @@ import clsx from "clsx";
 import { Metadata, Viewport } from "next";
 
 import { Providers } from "./providers";
-
 import { fontSans } from "@/config/fonts";
 import { siteConfig } from "@/config/site";
 import { Toaster } from "sonner";
@@ -36,7 +35,7 @@ export default async function RootLayout({
       <head />
       <body
         className={clsx(
-          "min-h-screen bg-slate-100 font-sans antialiased",
+          "min-h-screen bg-gray-100 font-sans antialiased", // Eliminamos overflow-hidden
           fontSans.variable
         )}
       >

@@ -4,9 +4,8 @@ import {
   EnumEndpoints,
   getProjectsById,
 } from "@/services/projects/projectService";
-import { useEffect, useState } from "react";
-import ProjectDetail from "./project-details/ProjectDetail";
 import useSWR from "swr";
+import ProjectDetail from "./project-details/ProjectDetail";
 
 interface Props {
   id?: string;
