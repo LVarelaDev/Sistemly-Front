@@ -7,13 +7,20 @@ import {
   NavbarItem,
   Navbar as NextUiNavbar,
 } from "@nextui-org/navbar";
-import { Avatar, Button } from "@nextui-org/react";
+import {
+  Avatar,
+  Button,
+  Dropdown,
+  DropdownItem,
+  DropdownMenu,
+  DropdownTrigger,
+} from "@nextui-org/react";
 import { signOut, useSession } from "next-auth/react";
+import CopmpanyMenu from "./CompanyMenu/CopmpanyMenu";
 
 const Navbar = () => {
   const { data: session } = useSession();
 
-  
   return (
     <NextUiNavbar
       maxWidth="full"
@@ -22,20 +29,12 @@ const Navbar = () => {
     >
       <NavbarContent justify="start">
         <NavbarItem className="text-gray-700">
-          {/* <BreadcrumbComponent /> */}
-          Bienvenido{" "}
-          <strong className="text-gray-800">{session?.user?.name}</strong>
+          <p className="text-xl font-bold text-blue-500">Sistemly</p>
         </NavbarItem>
       </NavbarContent>
       <NavbarContent justify="end">
         <div className="flex justify-end">
-          <Button
-            className="flex gap-2 justify-end text-xs w-full font-bold text-white bg-danger cursor-pointer"
-            onClick={() => signOut({ callbackUrl: "/login" })}
-          >
-            <FontAwesomeIcon icon={faArrowLeft} />
-            Cerrar sesión
-          </Button>
+          <CopmpanyMenu />
         </div>
       </NavbarContent>
     </NextUiNavbar>

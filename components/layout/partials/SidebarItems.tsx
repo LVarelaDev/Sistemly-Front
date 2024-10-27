@@ -4,9 +4,7 @@ import { useSidebar } from "@/stores/sideBarStore";
 import { Button } from "@nextui-org/button";
 import { Tooltip } from "@nextui-org/react";
 import { cn } from "@nextui-org/theme";
-import {
-    ContractsIcon
-} from "hugeicons-react";
+import { ContractsIcon, Mail01Icon, Mail02Icon } from "hugeicons-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
@@ -17,6 +15,11 @@ const SidebarItem = () => {
       name: "Proyectos",
       path: "/projects",
       icon: <ContractsIcon size={21} strokeWidth={1.8} />,
+    },
+    {
+      name: "Requerimientos",
+      path: "/requests",
+      icon: <Mail02Icon size={21} strokeWidth={1.8} />,
     },
   ];
   const pathName = usePathname();

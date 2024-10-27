@@ -39,3 +39,4 @@ export const statusColorResolver = (status: string): RecordObject => {
 
   return result;
 };
+

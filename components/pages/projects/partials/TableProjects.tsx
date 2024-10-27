@@ -32,12 +32,12 @@ const TableProject = ({ data }: Props) => {
           project?.client?.companyName ?? "no hay registro"
         }
       />
-      <CustomGridColumn<ProjectDto>
+      {/* <CustomGridColumn<ProjectDto>
         labelHeader="Empresa"
         colRender={(_, project) =>
           project?.company?.companyName ?? "no hay registro"
         }
-      />
+      /> */}
       <CustomGridColumn<ProjectDto>
         labelHeader="Presupuesto"
         colRender={(_, project) => convertToCOP(project.budget)}

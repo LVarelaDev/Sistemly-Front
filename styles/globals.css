@@ -15,6 +15,37 @@
   }
 
   .custom-scroll::-webkit-scrollbar-track {
-    background: #bebebe;
+    background: #e9ecef;
+  }
+
+  .custom-scroll::-webkit-scrollbar-thumb {
+    background-color: #9c9c9c;
+    border-radius: 5px;
+  }
+
+  .custom-scroll-secondary::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  .custom-scroll-secondary::-webkit-scrollbar-track {
+    background: #e9ecef;
+  }
+
+  .custom-scroll-secondary::-webkit-scrollbar-thumb {
+    background-color: #B6287D;
+    border-radius: 5px;
+  }
+
+  .custom-scroll-primary::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  .custom-scroll-primary::-webkit-scrollbar-track {
+    background: #e9ecef;
+  }
+
+  .custom-scroll-primary::-webkit-scrollbar-thumb {
+    background-color: #5d0e8b;
+    border-radius: 5px;
   }
 }

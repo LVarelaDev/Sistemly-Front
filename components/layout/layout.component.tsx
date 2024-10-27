@@ -23,7 +23,7 @@ const LayoutComponent = () => {
               isExpanded ? "w-52" : "w-0"
             )}
           >
-            <p className="text-xl font-bold text-blue-500">Sistemly</p>
+            
           </div>
           <ToogleSidebar />
         </section>

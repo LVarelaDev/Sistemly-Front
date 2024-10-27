@@ -114,7 +114,15 @@ const FComboBox = ({
 
   const renderNameValue = () => {
     return (
-      dataList.find((x) => x[itemValue] === +selected)?.[displayValue] ?? ""
+      dataList.find((x) => {
+        const itemValueAsString = x[itemValue].toString();
+        const selectedAsNumber = Number(selected);
+
+        // Comparar como número si es posible o como cadena en caso contrario
+        return (
+          x[itemValue] === selectedAsNumber || itemValueAsString === selected
+        );
+      })?.[displayValue] ?? ""
     );
   };
 
